@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="RoyalNest – Top 5 Luxury Hotels in India"/>
+  <title>RoyalNest | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{--gold:#c9a84c;--gold-light:#e8c97a;--gold-pale:#f9f3e3;--gold-dark:#9a7a2e;--black:#0a0a0a;--black-soft:#111111;--black-mid:#1a1a1a;--black-card:#161616;--white:#fff;--cream:#faf6ee;--tl:rgba(255,255,255,0.8);--tm:rgba(255,255,255,0.5);--bg:rgba(201,168,76,0.25);--bgl:rgba(201,168,76,0.08);--shadow:0 8px 40px rgba(201,168,76,0.18);--r:12px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:var(--black);color:#fff;overflow-x:hidden}
+    a{text-decoration:none;color:inherit} ul{list-style:none}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.2)}
+    .nav-inner{max-width:1280px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
+    .logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold);letter-spacing:1px}
+    .logo span{color:#fff}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{padding:8px 16px;font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.65);letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;border-radius:3px}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-links .btn-book{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:3px;font-weight:600;transition:all 0.2s}
+    .nav-links .btn-book:hover{background:var(--gold);color:#000}
+    .hamburger{display:none;font-size:1.4rem;cursor:pointer;color:var(--gold)}
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#1a1000 0%,#0a0a0a 60%)}
+    .hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.1) 0%,transparent 70%);pointer-events:none}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+    .hero-content{position:relative;z-index:2;padding:110px 24px 80px;max-width:900px}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.4);border-radius:30px;padding:6px 20px;font-size:0.7rem;font-weight:600;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;animation:fD 0.7s ease both}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:1.05;color:#fff;animation:fD 0.8s 0.1s ease both}
+    .hero h1 em{color:var(--gold);font-style:normal}
+    .hero-italic{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:rgba(255,255,255,0.5);font-style:italic;margin:14px 0 20px;animation:fD 0.8s 0.2s ease both}
+    .hero p{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:560px;margin:0 auto 38px;animation:fD 0.8s 0.3s ease both}
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fD 0.8s 0.4s ease both}
+    .btn-g{background:var(--gold);color:#000;padding:14px 34px;border-radius:3px;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-g:hover{background:var(--gold-light);transform:translateY(-2px)}
+    .btn-og{background:transparent;color:var(--gold);padding:14px 34px;border-radius:3px;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-og:hover{background:var(--gold);color:#000;transform:translateY(-2px)}
+    .hero-stats{display:flex;justify-content:center;gap:48px;margin-top:56px;padding-top:36px;border-top:1px solid rgba(201,168,76,0.2);animation:fU 0.8s 0.5s ease both;flex-wrap:wrap}
+    .hs strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold)}
+    .hs span{font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase}
+    /* SECTIONS */
+    .sec{padding:88px 32px}
+    .sec-in{max-width:1280px;margin:auto}
+    .stag{display:block;color:var(--gold);font-size:0.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+    .sh2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:14px}
+    .sh2 em{color:var(--gold);font-style:normal}
+    .sp{font-size:0.88rem;color:rgba(255,255,255,0.45);line-height:1.8;max-width:520px}
+    .tc{text-align:center}.tc .sp{margin:0 auto}
+    .divg{display:flex;align-items:center;gap:12px;margin:16px 0}
+    .divg::before,.divg::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.25)}
+    .divg i{color:var(--gold);font-size:0.65rem}
+    /* HOTEL CARDS */
+    .sec-dark{background:var(--black-soft)}
+    .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:26px;margin-top:48px}
+    .hcard{background:var(--black-card);border-radius:var(--r);border:1px solid rgba(201,168,76,0.2);overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer}
+    .hcard:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .hthumb{height:200px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative}
+    .ht1{background:linear-gradient(135deg,#1c1000,#3a2500)} .ht2{background:linear-gradient(135deg,#0d0d20,#1a1535)}
+    .ht3{background:linear-gradient(135deg,#091a09,#0f2d0f)} .ht4{background:linear-gradient(135deg,#1a0808,#2d0f0f)}
+    .ht5{background:linear-gradient(135deg,#071520,#0f2535)}
+    .rank{position:absolute;top:12px;left:12px;background:var(--gold);color:#000;font-family:'Playfair Display',serif;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:2px;letter-spacing:1px}
+    .hbody{padding:20px}
+    .hloc{font-size:0.72rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+    .hbody h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:7px}
+    .hbody p{font-size:0.81rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px}
+    .hmeta{display:flex;gap:14px;font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:14px}
+    .hmeta span{display:flex;align-items:center;gap:4px}
+    .hmeta i{color:var(--gold)}
+    .hfoot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(201,168,76,0.15)}
+    .hprice .from{font-size:0.7rem;color:rgba(255,255,255,0.35);display:block}
+    .hprice strong{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold)}
+    .hprice .per{font-size:0.7rem;color:rgba(255,255,255,0.35)}
+    .btn-sm{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:7px 16px;border-radius:3px;font-size:0.75rem;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.2s}
+    .btn-sm:hover{background:var(--gold);color:#000}
+    /* TABLE */
+    .twrap{overflow-x:auto;margin-top:48px;border-radius:var(--r);border:1px solid rgba(201,168,76,0.2)}
+    table{width:100%;border-collapse:collapse;background:var(--black-card);font-size:0.84rem}
+    thead{background:linear-gradient(90deg,#1a1000,#251800)}
+    thead th{padding:14px 18px;text-align:left;font-family:'Playfair Display',serif;font-weight:600;color:var(--gold);letter-spacing:1px;white-space:nowrap}
+    tbody tr{border-bottom:1px solid rgba(201,168,76,0.1);transition:background 0.15s}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:rgba(201,168,76,0.04)}
+    tbody td{padding:13px 18px;color:rgba(255,255,255,0.65)}
+    .sg{color:var(--gold)}
+    /* WHY */
+    .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:22px;margin-top:48px}
+    .wcard{background:var(--black-card);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r);padding:28px 20px;text-align:center;transition:transform 0.2s,box-shadow 0.2s}
+    .wcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .wi{font-size:2rem;margin-bottom:14px}
+    .wcard h3{font-family:'Playfair Display',serif;font-size:0.96rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .wcard p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65}
+    /* TESTIMONIALS */
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:48px}
+    .tcard{background:var(--black-card);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r);padding:26px}
+    .stars{color:var(--gold);font-size:0.82rem;letter-spacing:2px;margin-bottom:12px}
+    .tcard p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(255,255,255,0.65);font-style:italic;line-height:1.75;margin-bottom:16px}
+    .tauth{display:flex;align-items:center;gap:10px}
+    .tav{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:0.85rem}
+    .tav-info strong{font-size:0.85rem;color:#fff;display:block}
+    .tav-info span{font-size:0.72rem;color:rgba(255,255,255,0.38)}
+    /* CTA */
+    .cta{padding:88px 32px;background:linear-gradient(135deg,#120e00,#0a0a0a,#120e00);text-align:center;position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+    .cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);color:#fff;font-weight:700;margin-bottom:14px;position:relative}
+    .cta h2 em{color:var(--gold);font-style:normal}
+    .cta p{color:rgba(255,255,255,0.45);font-size:0.9rem;margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;position:relative}
+    /* FOOTER */
+    footer{background:#050505;border-top:1px solid rgba(201,168,76,0.15);padding:56px 32px 24px}
+    .fin{max-width:1280px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(201,168,76,0.1)}
+    .fb .logo{font-size:1.5rem;margin-bottom:12px;display:block}
+    .fb p{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.8;max-width:230px}
+    .fsoc{display:flex;gap:9px;margin-top:16px}
+    .fsoc a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);font-size:0.75rem;transition:all 0.2s}
+    .fsoc a:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+    .fc h4{font-family:'Playfair Display',serif;color:var(--gold);font-size:0.95rem;font-weight:600;margin-bottom:16px;letter-spacing:1px}
+    .fc ul li{margin-bottom:9px}
+    .fc ul li a{font-size:0.8rem;color:rgba(255,255,255,0.38);transition:color 0.2s}
+    .fc ul li a:hover{color:var(--gold)}
+    .fbot{max-width:1280px;margin:18px auto 0;display:flex;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:8px}
+    /* ANIM */
+    @keyframes fD{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fU{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    /* RWD */
+    @media(max-width:1024px){.fin{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:#0a0a0a;padding:20px;border-bottom:1px solid rgba(201,168,76,0.15)}.nav-links.open{display:flex}.hamburger{display:block}.hero-stats{gap:24px}.fin{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:center}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Royal<span>Nest</span></a>
+    <ul class="nav-links" id="nav">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="btn-book">Book Now</a></li>
+    </ul>
+    <span class="hamburger" onclick="document.getElementById('nav').classList.toggle('open')"><i class="fa fa-bars"></i></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="badge"><i class="fa fa-crown"></i> India's Finest Luxury Collection</div>
+    <h1>Where Royalty<br>Meets <em>Comfort</em></h1>
+    <div class="hero-italic">Experience India's Most Magnificent Hotels</div>
+    <p>From the golden palaces of Rajasthan to the serene backwaters of Kerala — discover the top 5 luxury hotels that define Indian hospitality at its absolute finest.</p>
+    <div class="hero-btns">
+      <a href="hotels.html" class="btn-g"><i class="fa fa-hotel"></i> Explore Hotels</a>
+      <a href="booking.html" class="btn-og"><i class="fa fa-calendar-check"></i> Book a Stay</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><strong>5</strong><span>Iconic Hotels</span></div>
+      <div class="hs"><strong>50+</strong><span>Years Legacy</span></div>
+      <div class="hs"><strong>4.9★</strong><span>Avg Rating</span></div>
+      <div class="hs"><strong>1L+</strong><span>Happy Guests</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section class="sec sec-dark">
+  <div class="sec-in">
+    <div class="tc">
+      <span class="stag">Our Collection</span>
+      <h2 class="sh2">Top 5 <em>Luxury Hotels</em> in India</h2>
+      <div class="divg"><i class="fa fa-star"></i></div>
+      <p class="sp">Handpicked for their grandeur, heritage and unparalleled service — India's crown jewels of hospitality.</p>
+    </div>
+    <div class="hgrid">
+      <div class="hcard"><div class="hthumb ht1"><span class="rank">#1 Ranked</span>🏰</div><div class="hbody"><div class="hloc"><i class="fa fa-map-marker-alt"></i> Udaipur, Rajasthan</div><h3>Taj Lake Palace</h3><p>A 250-year-old marble palace floating on Lake Pichola. The epitome of Rajput grandeur and romantic luxury.</p><div class="hmeta"><span><i class="fa fa-star"></i> 4.9/5</span><span><i class="fa fa-bed"></i> 83 Rooms</span><span><i class="fa fa-swimming-pool"></i> Pool & Spa</span></div><div class="hfoot"><div class="hprice"><span class="from">From</span><strong>₹45,000</strong><span class="per">/night</span></div><a href="hotels.html"><button class="btn-sm">View Details</button></a></div></div></div>
+      <div class="hcard"><div class="hthumb ht2"><span class="rank">#2 Ranked</span>🕌</div><div class="hbody"><div class="hloc"><i class="fa fa-map-marker-alt"></i> Mumbai, Maharashtra</div><h3>Taj Mahal Palace</h3><p>An iconic Victorian-era landmark overlooking the Gateway of India. A century of legendary hospitality.</p><div class="hmeta"><span><i class="fa fa-star"></i> 4.8/5</span><span><i class="fa fa-bed"></i> 285 Rooms</span><span><i class="fa fa-utensils"></i> Fine Dining</span></div><div class="hfoot"><div class="hprice"><span class="from">From</span><strong>₹38,000</strong><span class="per">/night</span></div><a href="hotels.html"><button class="btn-sm">View Details</button></a></div></div></div>
+      <div class="hcard"><div class="hthumb ht3"><span class="rank">#3 Ranked</span>🌴</div><div class="hbody"><div class="hloc"><i class="fa fa-map-marker-alt"></i> Kerala</div><h3>Kumarakom Lake Resort</h3><p>Nestled in Kerala's serene backwaters — traditional architecture meets world-class luxury.</p><div class="hmeta"><span><i class="fa fa-star"></i> 4.8/5</span><span><i class="fa fa-bed"></i> 102 Villas</span><span><i class="fa fa-spa"></i> Ayurveda</span></div><div class="hfoot"><div class="hprice"><span class="from">From</span><strong>₹28,000</strong><span class="per">/night</span></div><a href="hotels.html"><button class="btn-sm">View Details</button></a></div></div></div>
+      <div class="hcard"><div class="hthumb ht4"><span class="rank">#4 Ranked</span>🏯</div><div class="hbody"><div class="hloc"><i class="fa fa-map-marker-alt"></i> Jaipur, Rajasthan</div><h3>Rambagh Palace</h3><p>Once the jewel of Jaipur, this magnificent 19th-century palace is the ultimate royal retreat.</p><div class="hmeta"><span><i class="fa fa-star"></i> 4.9/5</span><span><i class="fa fa-bed"></i> 78 Suites</span><span><i class="fa fa-horse"></i> Royal Polo</span></div><div class="hfoot"><div class="hprice"><span class="from">From</span><strong>₹52,000</strong><span class="per">/night</span></div><a href="hotels.html"><button class="btn-sm">View Details</button></a></div></div></div>
+      <div class="hcard"><div class="hthumb ht5"><span class="rank">#5 Ranked</span>🌊</div><div class="hbody"><div class="hloc"><i class="fa fa-map-marker-alt"></i> Goa</div><h3>The Leela Goa</h3><p>Nestled between a lagoon and the Arabian Sea — a tropical paradise of extraordinary beauty.</p><div class="hmeta"><span><i class="fa fa-star"></i> 4.7/5</span><span><i class="fa fa-bed"></i> 206 Rooms</span><span><i class="fa fa-umbrella-beach"></i> Private Beach</span></div><div class="hfoot"><div class="hprice"><span class="from">From</span><strong>₹22,000</strong><span class="per">/night</span></div><a href="hotels.html"><button class="btn-sm">View Details</button></a></div></div></div>
+    </div>
+    <!-- TABLE -->
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Hotel</th><th>Location</th><th>Rating</th><th>Rooms</th><th>Price/Night</th><th>Specialty</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="sg"><strong>#1</strong></td><td><strong>Taj Lake Palace</strong></td><td>Udaipur, Rajasthan</td><td class="sg">★★★★★ 4.9</td><td>83</td><td>₹45,000</td><td>Lake View Palace</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><strong>#2</strong></td><td><strong>Taj Mahal Palace</strong></td><td>Mumbai</td><td class="sg">★★★★★ 4.8</td><td>285</td><td>₹38,000</td><td>Heritage Landmark</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><strong>#3</strong></td><td><strong>Kumarakom Lake Resort</strong></td><td>Kerala</td><td class="sg">★★★★★ 4.8</td><td>102</td><td>₹28,000</td><td>Backwater Villas</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><strong>#4</strong></td><td><strong>Rambagh Palace</strong></td><td>Jaipur, Rajasthan</td><td class="sg">★★★★★ 4.9</td><td>78</td><td>₹52,000</td><td>Royal Palace</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><strong>#5</strong></td><td><strong>The Leela Goa</strong></td><td>Goa</td><td class="sg">★★★★☆ 4.7</td><td>206</td><td>₹22,000</td><td>Beach & Lagoon</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="sec-in">
+    <div class="tc"><span class="stag">Why Choose Us</span><h2 class="sh2">The <em>RoyalNest</em> Promise</h2><div class="divg"><i class="fa fa-gem"></i></div></div>
+    <div class="wgrid">
+      <div class="wcard"><div class="wi">👑</div><h3>Handpicked Excellence</h3><p>Every hotel is personally vetted for luxury, heritage and guest experience.</p></div>
+      <div class="wcard"><div class="wi">🔒</div><h3>Best Rate Guarantee</h3><p>We guarantee the lowest rates. Found cheaper? We'll match and beat it.</p></div>
+      <div class="wcard"><div class="wi">🎩</div><h3>Concierge Service</h3><p>24/7 personal concierge to handle every request before and during your stay.</p></div>
+      <div class="wcard"><div class="wi">✈️</div><h3>Airport Transfers</h3><p>Complimentary luxury car transfers from airport to hotel for all bookings.</p></div>
+      <div class="wcard"><div class="wi">🍽️</div><h3>Fine Dining Included</h3><p>Curated dining experiences with world-class chefs included in select packages.</p></div>
+      <div class="wcard"><div class="wi">📜</div><h3>Heritage Certified</h3><p>All our hotels are certified heritage properties with authentic royal experiences.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-dark">
+  <div class="sec-in">
+    <div class="tc"><span class="stag">Guest Reviews</span><h2 class="sh2">What Our <em>Royal Guests</em> Say</h2><div class="divg"><i class="fa fa-star"></i></div></div>
+    <div class="tgrid">
+      <div class="tcard"><div class="stars">★★★★★</div><p>"Staying at Taj Lake Palace was like stepping into a fairytale. Every detail was absolutely magical."</p><div class="tauth"><div class="tav">P</div><div class="tav-info"><strong>Priya Kapoor</strong><span>Mumbai, India</span></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>"Rambagh Palace exceeded every expectation. The royal treatment made our honeymoon unforgettable."</p><div class="tauth"><div class="tav">R</div><div class="tav-info"><strong>Rohan & Neha</strong><span>Delhi, India</span></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>"The Leela Goa is paradise on earth. The private beach, the food, the service — all flawless."</p><div class="tauth"><div class="tav">A</div><div class="tav-info"><strong>Arjun Sharma</strong><span>Bangalore, India</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready for Your <em>Royal</em> Experience?</h2>
+  <p>Book your stay at India's finest luxury hotels. Exclusive rates, complimentary upgrades and royal treatment await.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="booking.html" class="btn-g"><i class="fa fa-crown"></i> Book Your Stay</a>
+    <a href="hotels.html" class="btn-og"><i class="fa fa-hotel"></i> View All Hotels</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fin">
+    <div class="fb"><span class="logo">Royal<span style="color:#fff">Nest</span></span><p>Curating India's finest luxury hotel experiences since 2010. Where every stay becomes a royal memory.</p><div class="fsoc"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+    <div class="fc"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="hotels.html">Hotels</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li><li><a href="booking.html">Book Now</a></li></ul></div>
+    <div class="fc"><h4>Our Hotels</h4><ul><li><a href="hotels.html">Taj Lake Palace</a></li><li><a href="hotels.html">Taj Mahal Palace</a></li><li><a href="hotels.html">Kumarakom Resort</a></li><li><a href="hotels.html">Rambagh Palace</a></li><li><a href="hotels.html">The Leela Goa</a></li></ul></div>
+    <div class="fc"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">FAQs</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2025 RoyalNest. All rights reserved.</span><span>Crafted with <span style="color:var(--gold)">♛</span> for royal travellers.</span></div>
+</footer>
+</body>
+</html>

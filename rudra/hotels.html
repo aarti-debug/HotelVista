@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RoyalNest | Hotels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{--gold:#c9a84c;--gold-light:#e8c97a;--black:#0a0a0a;--black-soft:#111;--black-card:#161616;--shadow:0 8px 40px rgba(201,168,76,0.18);--r:12px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:var(--black);color:#fff;overflow-x:hidden}
+    a{text-decoration:none;color:inherit} ul{list-style:none}
+    nav{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.2)}
+    .nav-inner{max-width:1280px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
+    .logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold);letter-spacing:1px}
+    .logo span{color:#fff}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{padding:8px 16px;font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.65);letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-links .btn-book{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:3px;font-weight:600;transition:all 0.2s}
+    .nav-links .btn-book:hover{background:var(--gold);color:#000}
+    .hamburger{display:none;font-size:1.4rem;cursor:pointer;color:var(--gold)}
+    /* PAGE HERO */
+    .phero{padding:120px 32px 60px;background:radial-gradient(ellipse at 50% 0%,#1a1000,#0a0a0a 70%);text-align:center;border-bottom:1px solid rgba(201,168,76,0.1)}
+    .stag{display:block;color:var(--gold);font-size:0.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+    .sh2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#fff;margin-bottom:14px}
+    .sh2 em{color:var(--gold);font-style:normal}
+    .sp{font-size:0.88rem;color:rgba(255,255,255,0.45);line-height:1.8;max-width:520px;margin:0 auto}
+    .divg{display:flex;align-items:center;gap:12px;margin:14px auto;max-width:200px}
+    .divg::before,.divg::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.25)}
+    .divg i{color:var(--gold);font-size:0.65rem}
+    /* HOTEL DETAIL CARDS */
+    .sec{padding:80px 32px}
+    .sec-in{max-width:1280px;margin:auto}
+    .hotel-detail{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-bottom:70px;padding-bottom:70px;border-bottom:1px solid rgba(201,168,76,0.1)}
+    .hotel-detail:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .hotel-detail.rev{direction:rtl}
+    .hotel-detail.rev>*{direction:ltr}
+    .hd-visual{border-radius:var(--r);overflow:hidden;border:1px solid rgba(201,168,76,0.2);height:340px;display:flex;align-items:center;justify-content:center;font-size:6rem;position:relative}
+    .ht1{background:linear-gradient(135deg,#1c1000,#3a2500)}
+    .ht2{background:linear-gradient(135deg,#0d0d20,#1a1535)}
+    .ht3{background:linear-gradient(135deg,#091a09,#0f2d0f)}
+    .ht4{background:linear-gradient(135deg,#1a0808,#2d0f0f)}
+    .ht5{background:linear-gradient(135deg,#071520,#0f2535)}
+    .rank-big{position:absolute;top:16px;left:16px;background:var(--gold);color:#000;font-family:'Playfair Display',serif;font-size:0.8rem;font-weight:700;padding:5px 14px;border-radius:2px;letter-spacing:1px}
+    .hd-text .stag{text-align:left;display:block}
+    .hd-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:#fff;margin-bottom:8px}
+    .hd-text h2 em{color:var(--gold);font-style:normal}
+    .hd-loc{font-size:0.78rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+    .hd-text p{font-size:0.87rem;color:rgba(255,255,255,0.5);line-height:1.82;margin-bottom:20px}
+    .amenities{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+    .amen{display:flex;align-items:center;gap:6px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:5px 14px;font-size:0.75rem;color:rgba(255,255,255,0.65)}
+    .amen i{color:var(--gold);font-size:0.72rem}
+    .hd-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+    .hm-item{background:var(--black-card);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:14px;text-align:center}
+    .hm-item i{color:var(--gold);font-size:1.1rem;margin-bottom:6px;display:block}
+    .hm-item strong{display:block;font-family:'Playfair Display',serif;font-size:1rem;color:#fff}
+    .hm-item span{font-size:0.7rem;color:rgba(255,255,255,0.38);letter-spacing:1px;text-transform:uppercase}
+    .hd-footer{display:flex;align-items:center;justify-content:space-between}
+    .hd-price .from{font-size:0.72rem;color:rgba(255,255,255,0.38);display:block}
+    .hd-price strong{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold)}
+    .hd-price .per{font-size:0.72rem;color:rgba(255,255,255,0.38)}
+    .btn-g{background:var(--gold);color:#000;padding:13px 28px;border-radius:3px;font-size:0.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-g:hover{background:var(--gold-light);transform:translateY(-2px)}
+    /* TABLE */
+    .table-sec{background:var(--black-soft);padding:80px 32px}
+    .twrap{overflow-x:auto;border-radius:var(--r);border:1px solid rgba(201,168,76,0.2);margin-top:40px}
+    table{width:100%;border-collapse:collapse;background:var(--black-card);font-size:0.84rem}
+    thead{background:linear-gradient(90deg,#1a1000,#251800)}
+    thead th{padding:14px 18px;text-align:left;font-family:'Playfair Display',serif;font-weight:600;color:var(--gold);letter-spacing:1px;white-space:nowrap}
+    tbody tr{border-bottom:1px solid rgba(201,168,76,0.1);transition:background 0.15s}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:rgba(201,168,76,0.04)}
+    tbody td{padding:13px 18px;color:rgba(255,255,255,0.65)}
+    .sg{color:var(--gold)}
+    /* FOOTER */
+    footer{background:#050505;border-top:1px solid rgba(201,168,76,0.15);padding:56px 32px 24px}
+    .fin{max-width:1280px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(201,168,76,0.1)}
+    .fb .logo{font-size:1.5rem;margin-bottom:12px;display:block}
+    .fb p{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.8;max-width:230px}
+    .fsoc{display:flex;gap:9px;margin-top:16px}
+    .fsoc a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);font-size:0.75rem;transition:all 0.2s}
+    .fsoc a:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+    .fc h4{font-family:'Playfair Display',serif;color:var(--gold);font-size:0.95rem;font-weight:600;margin-bottom:16px}
+    .fc ul li{margin-bottom:9px}
+    .fc ul li a{font-size:0.8rem;color:rgba(255,255,255,0.38);transition:color 0.2s}
+    .fc ul li a:hover{color:var(--gold)}
+    .fbot{max-width:1280px;margin:18px auto 0;display:flex;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:8px}
+    @media(max-width:1024px){.hotel-detail{grid-template-columns:1fr}.hotel-detail.rev{direction:ltr}.fin{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:#0a0a0a;padding:20px;border-bottom:1px solid rgba(201,168,76,0.15)}.nav-links.open{display:flex}.hamburger{display:block}.fin{grid-template-columns:1fr}.hd-meta{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Royal<span>Nest</span></a>
+    <ul class="nav-links" id="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="hotels.html" class="active">Hotels</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="btn-book">Book Now</a></li>
+    </ul>
+    <span class="hamburger" onclick="document.getElementById('nav').classList.toggle('open')"><i class="fa fa-bars"></i></span>
+  </div>
+</nav>
+<div class="phero">
+  <span class="stag">Our Collection</span>
+  <h2 class="sh2">Top 5 <em>Luxury Hotels</em> in India</h2>
+  <div class="divg"><i class="fa fa-crown"></i></div>
+  <p class="sp">Each property is a masterpiece of heritage, hospitality and breathtaking beauty — chosen to offer you an unforgettable royal experience.</p>
+</div>
+
+<section class="sec">
+  <div class="sec-in">
+    <!-- HOTEL 1 -->
+    <div class="hotel-detail">
+      <div class="hd-visual ht1"><span class="rank-big">#1 Best in India</span>🏰</div>
+      <div class="hd-text">
+        <span class="stag">Udaipur, Rajasthan</span>
+        <h2>Taj <em>Lake Palace</em></h2>
+        <div class="hd-loc"><i class="fa fa-map-marker-alt"></i> Lake Pichola, Udaipur 313001</div>
+        <p>Built in 1746 by Maharana Jagat Singh II, the Taj Lake Palace is an ethereal vision of white marble rising from the shimmering waters of Lake Pichola. This floating palace hotel offers 83 exquisitely decorated rooms and suites, each reflecting the opulence of the Mewar dynasty. Dining here means feasting on traditional Rajasthani cuisine under starlit skies with the lake as your backdrop.</p>
+        <div class="amenities">
+          <span class="amen"><i class="fa fa-swimming-pool"></i> Infinity Pool</span>
+          <span class="amen"><i class="fa fa-spa"></i> Royal Spa</span>
+          <span class="amen"><i class="fa fa-utensils"></i> 3 Restaurants</span>
+          <span class="amen"><i class="fa fa-cocktail"></i> Sunset Bar</span>
+          <span class="amen"><i class="fa fa-ship"></i> Boat Rides</span>
+        </div>
+        <div class="hd-meta">
+          <div class="hm-item"><i class="fa fa-star"></i><strong>4.9/5</strong><span>Rating</span></div>
+          <div class="hm-item"><i class="fa fa-bed"></i><strong>83</strong><span>Rooms</span></div>
+          <div class="hm-item"><i class="fa fa-history"></i><strong>1746</strong><span>Est. Year</span></div>
+        </div>
+        <div class="hd-footer">
+          <div class="hd-price"><span class="from">From</span><strong>₹45,000</strong><span class="per">/night</span></div>
+          <a href="booking.html"><button class="btn-g"><i class="fa fa-crown"></i> Book Now</button></a>
+        </div>
+      </div>
+    </div>
+    <!-- HOTEL 2 -->
+    <div class="hotel-detail rev">
+      <div class="hd-visual ht2"><span class="rank-big">#2 Best in India</span>🕌</div>
+      <div class="hd-text">
+        <span class="stag">Mumbai, Maharashtra</span>
+        <h2>Taj Mahal <em>Palace</em></h2>
+        <div class="hd-loc"><i class="fa fa-map-marker-alt"></i> Apollo Bunder, Mumbai 400001</div>
+        <p>Since 1903, the Taj Mahal Palace has been the crown jewel of Mumbai's skyline. Standing majestically opposite the Gateway of India, this iconic Victorian Gothic and Moorish Revival landmark has hosted royalty, heads of state and legends. With 285 luxuriously appointed rooms, acclaimed restaurants and a legendary heritage, it remains the ultimate address in Mumbai.</p>
+        <div class="amenities">
+          <span class="amen"><i class="fa fa-concierge-bell"></i> 24/7 Butler</span>
+          <span class="amen"><i class="fa fa-utensils"></i> 6 Restaurants</span>
+          <span class="amen"><i class="fa fa-water"></i> Sea View</span>
+          <span class="amen"><i class="fa fa-spa"></i> Jiva Spa</span>
+          <span class="amen"><i class="fa fa-wine-glass-alt"></i> Rooftop Bar</span>
+        </div>
+        <div class="hd-meta">
+          <div class="hm-item"><i class="fa fa-star"></i><strong>4.8/5</strong><span>Rating</span></div>
+          <div class="hm-item"><i class="fa fa-bed"></i><strong>285</strong><span>Rooms</span></div>
+          <div class="hm-item"><i class="fa fa-history"></i><strong>1903</strong><span>Est. Year</span></div>
+        </div>
+        <div class="hd-footer">
+          <div class="hd-price"><span class="from">From</span><strong>₹38,000</strong><span class="per">/night</span></div>
+          <a href="booking.html"><button class="btn-g"><i class="fa fa-crown"></i> Book Now</button></a>
+        </div>
+      </div>
+    </div>
+    <!-- HOTEL 3 -->
+    <div class="hotel-detail">
+      <div class="hd-visual ht3"><span class="rank-big">#3 Best in India</span>🌴</div>
+      <div class="hd-text">
+        <span class="stag">Kerala</span>
+        <h2>Kumarakom <em>Lake Resort</em></h2>
+        <div class="hd-loc"><i class="fa fa-map-marker-alt"></i> Kumarakom, Kerala 686563</div>
+        <p>Spread across 26 acres on the banks of Vembanad Lake, Kumarakom Lake Resort is a serene sanctuary of authentic Kerala heritage. The resort seamlessly blends traditional tharawad architecture with world-class modern luxury. Guests enjoy private villa stays, Ayurvedic spa treatments, houseboat cruises and the magical Kerala backwaters experience unlike any other.</p>
+        <div class="amenities">
+          <span class="amen"><i class="fa fa-spa"></i> Ayurveda Spa</span>
+          <span class="amen"><i class="fa fa-water"></i> Backwater View</span>
+          <span class="amen"><i class="fa fa-home"></i> Private Villas</span>
+          <span class="amen"><i class="fa fa-ship"></i> Houseboat</span>
+          <span class="amen"><i class="fa fa-leaf"></i> Yoga Centre</span>
+        </div>
+        <div class="hd-meta">
+          <div class="hm-item"><i class="fa fa-star"></i><strong>4.8/5</strong><span>Rating</span></div>
+          <div class="hm-item"><i class="fa fa-home"></i><strong>102</strong><span>Villas</span></div>
+          <div class="hm-item"><i class="fa fa-tree"></i><strong>26</strong><span>Acres</span></div>
+        </div>
+        <div class="hd-footer">
+          <div class="hd-price"><span class="from">From</span><strong>₹28,000</strong><span class="per">/night</span></div>
+          <a href="booking.html"><button class="btn-g"><i class="fa fa-crown"></i> Book Now</button></a>
+        </div>
+      </div>
+    </div>
+    <!-- HOTEL 4 -->
+    <div class="hotel-detail rev">
+      <div class="hd-visual ht4"><span class="rank-big">#4 Best in India</span>🏯</div>
+      <div class="hd-text">
+        <span class="stag">Jaipur, Rajasthan</span>
+        <h2>Rambagh <em>Palace</em></h2>
+        <div class="hd-loc"><i class="fa fa-map-marker-alt"></i> Bhawani Singh Rd, Jaipur 302005</div>
+        <p>Once the hunting lodge of the Maharaja of Jaipur, the magnificent Rambagh Palace was transformed into the most celebrated royal residence in Rajasthan. Today it stands as a Taj hotel and is often called the "Jewel of Jaipur." The palace is surrounded by 47 acres of immaculate Mughal gardens, polo grounds and opulent royal suites that transport guests to a bygone era of Indian royalty.</p>
+        <div class="amenities">
+          <span class="amen"><i class="fa fa-horse"></i> Royal Polo</span>
+          <span class="amen"><i class="fa fa-tree"></i> Mughal Gardens</span>
+          <span class="amen"><i class="fa fa-spa"></i> Jiva Spa</span>
+          <span class="amen"><i class="fa fa-swimming-pool"></i> Royal Pool</span>
+          <span class="amen"><i class="fa fa-music"></i> Cultural Shows</span>
+        </div>
+        <div class="hd-meta">
+          <div class="hm-item"><i class="fa fa-star"></i><strong>4.9/5</strong><span>Rating</span></div>
+          <div class="hm-item"><i class="fa fa-bed"></i><strong>78</strong><span>Suites</span></div>
+          <div class="hm-item"><i class="fa fa-tree"></i><strong>47</strong><span>Acres</span></div>
+        </div>
+        <div class="hd-footer">
+          <div class="hd-price"><span class="from">From</span><strong>₹52,000</strong><span class="per">/night</span></div>
+          <a href="booking.html"><button class="btn-g"><i class="fa fa-crown"></i> Book Now</button></a>
+        </div>
+      </div>
+    </div>
+    <!-- HOTEL 5 -->
+    <div class="hotel-detail">
+      <div class="hd-visual ht5"><span class="rank-big">#5 Best in India</span>🌊</div>
+      <div class="hd-text">
+        <span class="stag">Goa</span>
+        <h2>The <em>Leela Goa</em></h2>
+        <div class="hd-loc"><i class="fa fa-map-marker-alt"></i> Mobor, Cavelossim, Goa 403731</div>
+        <p>Nestled between a sparkling lagoon and the shimmering Arabian Sea, The Leela Goa is a magnificent resort that captures the soul of Goa's natural splendour. Spread across 75 acres of lush tropical gardens, the resort offers 206 rooms and suites, a private beach, 9-hole golf course and exceptional dining under coconut palms. It is the definition of a tropical paradise done in absolute luxury.</p>
+        <div class="amenities">
+          <span class="amen"><i class="fa fa-umbrella-beach"></i> Private Beach</span>
+          <span class="amen"><i class="fa fa-golf-ball"></i> Golf Course</span>
+          <span class="amen"><i class="fa fa-swimmer"></i> 3 Pools</span>
+          <span class="amen"><i class="fa fa-spa"></i> ESPA Spa</span>
+          <span class="amen"><i class="fa fa-fish"></i> Water Sports</span>
+        </div>
+        <div class="hd-meta">
+          <div class="hm-item"><i class="fa fa-star"></i><strong>4.7/5</strong><span>Rating</span></div>
+          <div class="hm-item"><i class="fa fa-bed"></i><strong>206</strong><span>Rooms</span></div>
+          <div class="hm-item"><i class="fa fa-tree"></i><strong>75</strong><span>Acres</span></div>
+        </div>
+        <div class="hd-footer">
+          <div class="hd-price"><span class="from">From</span><strong>₹22,000</strong><span class="per">/night</span></div>
+          <a href="booking.html"><button class="btn-g"><i class="fa fa-crown"></i> Book Now</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section class="table-sec">
+  <div class="sec-in">
+    <div style="text-align:center"><span class="stag">Quick Compare</span><h2 class="sh2" style="text-align:center">Hotel <em>Comparison</em> Table</h2></div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Hotel</th><th>Location</th><th>Rating</th><th>Rooms</th><th>Est.</th><th>Speciality</th><th>Price/Night</th><th>Book</th></tr></thead>
+        <tbody>
+          <tr><td class="sg"><b>#1</b></td><td><b>Taj Lake Palace</b></td><td>Udaipur</td><td class="sg">★★★★★ 4.9</td><td>83</td><td>1746</td><td>Floating Palace</td><td>₹45,000</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><b>#2</b></td><td><b>Taj Mahal Palace</b></td><td>Mumbai</td><td class="sg">★★★★★ 4.8</td><td>285</td><td>1903</td><td>Heritage Icon</td><td>₹38,000</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><b>#3</b></td><td><b>Kumarakom Resort</b></td><td>Kerala</td><td class="sg">★★★★★ 4.8</td><td>102</td><td>1998</td><td>Backwater Villas</td><td>₹28,000</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><b>#4</b></td><td><b>Rambagh Palace</b></td><td>Jaipur</td><td class="sg">★★★★★ 4.9</td><td>78</td><td>1835</td><td>Royal Palace</td><td>₹52,000</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+          <tr><td class="sg"><b>#5</b></td><td><b>The Leela Goa</b></td><td>Goa</td><td class="sg">★★★★☆ 4.7</td><td>206</td><td>1991</td><td>Beach Resort</td><td>₹22,000</td><td><a href="booking.html" class="sg" style="font-weight:600">Book →</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fin">
+    <div class="fb"><span class="logo">Royal<span style="color:#fff">Nest</span></span><p>Curating India's finest luxury hotel experiences since 2010.</p><div class="fsoc"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+    <div class="fc"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="hotels.html">Hotels</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li><li><a href="booking.html">Book Now</a></li></ul></div>
+    <div class="fc"><h4>Our Hotels</h4><ul><li><a href="#">Taj Lake Palace</a></li><li><a href="#">Taj Mahal Palace</a></li><li><a href="#">Kumarakom Resort</a></li><li><a href="#">Rambagh Palace</a></li><li><a href="#">The Leela Goa</a></li></ul></div>
+    <div class="fc"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">FAQs</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2025 RoyalNest. All rights reserved.</span><span>Crafted with <span style="color:var(--gold)">♛</span> for royal travellers.</span></div>
+</footer>
+</body>
+</html>
